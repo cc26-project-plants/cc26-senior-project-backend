@@ -2,7 +2,7 @@
   "name": "cc26-senior-project-backend",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "juliwithoutthee <jnboucree@gmail.com>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -24,6 +24,7 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "nodemon": "^2.0.16",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
@@ -67,5 +68,7 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/cc26-project-plants/cc26-senior-project-backend.git"
 }
