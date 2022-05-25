@@ -7,7 +7,7 @@ import { UserController } from "./user/user.controller"
 
 @Module({
   imports: [TypeOrmModule],
-  controllers: [AppController, UserController, plantsController ],
+  controllers: [AppController, UserController, plantsController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
