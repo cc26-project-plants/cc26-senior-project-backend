@@ -55,7 +55,7 @@ $ yarn test
 $ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
 
 ## Support
