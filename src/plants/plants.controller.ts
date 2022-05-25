@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Put } from "@nestjs/common";
 
+//Handles plant related HTTP requests
 
 @Controller('plants')
 export class PlantsController {
