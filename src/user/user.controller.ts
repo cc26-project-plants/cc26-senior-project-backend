@@ -3,7 +3,6 @@ import { Controller, Get, Post, Put } from "@nestjs/common";
 
 //Handles any HTTP requests involving user
 
-
 @Controller('user')
 export class UserController {
     @Get()
