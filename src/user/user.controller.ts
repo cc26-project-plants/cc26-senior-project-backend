@@ -1,5 +1,8 @@
 import { Controller, Get, Post, Put } from "@nestjs/common";
 
+
+//Handles any HTTP requests involving user
+
 @Controller('user')
 export class UserController {
     @Get()
@@ -14,12 +17,12 @@ export class UserController {
 
     @Post()
     createUser() {
-        return "Create User";
+        return "Create User"; //should create User and send data to database
     }
 
     @Put('/:userId')
     updateUser() {
-        return "Updates User by Id";
+        return "Updates User by Id"; //should allow user info to be updated
     }
-    
+
 }

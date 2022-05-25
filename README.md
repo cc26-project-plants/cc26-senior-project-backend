@@ -42,7 +42,7 @@ $ yarn start
 $ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
 ## Test
@@ -55,7 +55,7 @@ $ yarn test
 $ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
 
 ## Support
