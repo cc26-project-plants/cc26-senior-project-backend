@@ -7,12 +7,13 @@ import { PlantsController } from './plants/plants.controller';
 import { PlantsService } from './plants/plants.service';
 import { UserController } from "./user/user.controller"
 import { UserService } from './user/user.service';
+import { PlantStatsService } from './plant-stats/plant-stats.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeOrmConfig),
   ],
   controllers: [AppController, UserController, PlantsController],
-  providers: [AppService, UserService, PlantsService],
+  providers: [AppService, UserService, PlantsService, PlantStatsService],
 })
 export class AppModule { }
