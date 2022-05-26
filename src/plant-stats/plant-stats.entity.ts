@@ -19,6 +19,9 @@ export class PlantStats extends BaseEntity{
 
     @Column()
     temperature: number;
+
+    @Column('timestamp')
+    time: Date;
     
 
 }

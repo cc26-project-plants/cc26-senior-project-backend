@@ -10,3 +10,4 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     entities: [__dirname + '/../**/*.entity.ts'],
     synchronize: true, //change to false later
 }; //use env later instead of hard code
+//TODO
