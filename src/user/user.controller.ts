@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put } from "@nestjs/common";
+import { Controller, Get, Post, Put, Param, Body } from "@nestjs/common";
 
 
 //Handles any HTTP requests involving user
@@ -11,17 +11,21 @@ export class UserController {
     }
 
     @Get('/:userId')
-    getStudentById() {
+    getStudentById(@Param() params: {userId : Number}) {
+        console.log(params);
         return "Get Student by Id"; // single user
     }
 
     @Post()
-    createUser() {
+    createUser( @Body() body) {
+        console.log(body);
         return "Create User"; //should create User and send data to database
     }
 
     @Put('/:userId')
-    updateUser() {
+    updateUser(
+        @Param('userId') userId: Number, @Body() body 
+    ) {
         return "Updates User by Id"; //should allow user info to be updated
     }
 
