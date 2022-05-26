@@ -14,5 +14,5 @@ export class Plants extends BaseEntity {
     @ManyToOne(type => User, user => user.id)
     user: User; 
    
-
+    //plantStats
 };
