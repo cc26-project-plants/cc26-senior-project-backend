@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Put } from '@nestjs/common';
+import { PlantsService } from './plants.service';
 
 //Handles plant related HTTP requests
 
