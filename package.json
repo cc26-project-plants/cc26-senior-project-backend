@@ -1,8 +1,7 @@
 {
   "name": "cc26-senior-project-backend",
   "version": "0.0.1",
-  "description": "",
-  "author": "juliwithoutthee <jnboucree@gmail.com>",
+  "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -31,7 +30,8 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.3.6"
+    "typeorm": "^0.3.6",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -73,6 +73,5 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "main": "index.js",
-  "repository": "https://github.com/cc26-project-plants/cc26-senior-project-backend.git"
+  "main": "index.js"
 }
