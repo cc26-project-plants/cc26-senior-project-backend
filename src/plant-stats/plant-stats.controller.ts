@@ -3,7 +3,7 @@ import { Controller, Get, Post, Put, Param, Body, } from "@nestjs/common";
 @Controller('plant-stats')
 export class PlantStatsController {
 
-    @Get('/plantId') //double check route 
+    @Get('/:plantId') //double check route 
     getStatsByPlantId() {
         return "Stats by Plant Id"; // try to get all stats for that plant
     }
