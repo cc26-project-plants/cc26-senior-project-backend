@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import { PlantStatsService } from './plant-stats.service';
 
 @Controller('plant-stats')
 export class PlantStatsController {

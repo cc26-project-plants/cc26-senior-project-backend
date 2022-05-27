@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import { UserService } from './user.service';
 
 //Handles any HTTP requests involving user
 
