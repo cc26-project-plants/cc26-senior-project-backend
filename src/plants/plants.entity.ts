@@ -1,5 +1,6 @@
+import { PlantStats } from "src/plant-stats/plant-stats.entity";
 import { User } from "src/user/user.entity";
-import { BaseEntity, Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export class Plants extends BaseEntity {
     @PrimaryGeneratedColumn()
@@ -12,7 +13,9 @@ export class Plants extends BaseEntity {
     photo: string;
 
     @ManyToOne(type => User, user => user.id)
-    user: User; 
-   
-    //plantStats
+    user: User;
+
+    @OneToMany(type => PlantStats, plantStats => plantStats.id)
+    plantStats: PlantStats;
+
 };
