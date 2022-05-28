@@ -1,12 +1,13 @@
 import { Plants } from 'src/plants/plants.entity';
-import { BaseEntity, ManyToOne, PrimaryColumn, Column } from 'typeorm';
+import { BaseEntity, ManyToOne, PrimaryColumn, Column, Entity } from 'typeorm';
 
+@Entity()
 export class PlantStats extends BaseEntity {
   @PrimaryColumn()
   id: number;
 
-  @ManyToOne((type) => Plants, (plant) => plant.id)
-  plant: Plants;
+  // @ManyToOne((type) => Plants, (plant) => plant.id)
+  // plant: Plants;
 
   @Column('float')
   lightLevel: number;
