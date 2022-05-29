@@ -1,23 +1,11 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import 'dotenv/config';
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: 'O23Ak!10',
-  database: 'projectplant',
-  logging: true,
-  synchronize: true, //change to false later
-  entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/migration/*.js'],
-  subscribers: ['src/subscriber/**/*.ts'],
-  // cli: {
-  //   entitiesDir: 'src/entity',
-  //   migrationsDir: 'src/migration',
-  //   subscribersDir: 'src/subscriber',
-  // },
+  database: process.env.DATABASE,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  entities: [__dirname + '/../**/*.entity.ts'],
+  synchronize: true, // change to false later
 };
-//TODO
-//use env later instead of hard code
-//change to false later : synchronize: true,
