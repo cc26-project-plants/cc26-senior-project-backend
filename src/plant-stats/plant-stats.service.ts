@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PlantStats } from './plant-stats.entity';
-import { Repository } from 'typeorm';
+import { Repository, InsertResult } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { time } from 'console';
 
@@ -11,24 +11,32 @@ export class PlantStatsService {
     private readonly plantstatsRepository: Repository<PlantStats>,
   ) {}
 
-  getStatAll() {
-    return this.plantstatsRepository.find();
+  async getStatAll() {
+    return await this.plantstatsRepository.find();
   }
 
-  updateStas(
-    lightLevel: number,
-    soilWaterLevel: number,
-    humidityLevel: number,
-    temperature: number,
-    time: Date,
-  ) {
+  async getStatLatest() {
+    const alldata = await this.plantstatsRepository.find();
+    const latest = alldata.slice(0, 12); //the latest ~ 12h ago
+    return latest;
+  }
+
+  // async getStatbyId() {
+  //     return await this.plantstatsRepository.findOne({plant.id});
+  //   }
+
+  //   async getStatsByPlantId(plantId: number) {
+  //     return await this.plantstatsRepository.findOne({ plantId });
+  //   }
+
+  async updateStas(posted: any): Promise<InsertResult> {
     const data = new PlantStats();
-    data.lightLevel = lightLevel;
-    data.soilWaterLevel = soilWaterLevel;
-    data.humidityLevel = humidityLevel;
-    data.temperature = temperature;
-    data.time = time;
-    // return this.plantstatsRepository(data)
+    data.lightLevel = posted.lightLevel;
+    data.soilWaterLevel = posted.soilWaterLevel;
+    data.humidityLevel = posted.humidityLevel;
+    data.temperature = posted.temperature;
+    // data.time = time;
+    return await this.plantstatsRepository.insert(data);
   }
 }
 

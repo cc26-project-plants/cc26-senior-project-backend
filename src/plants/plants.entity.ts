@@ -18,6 +18,9 @@ export class Plants extends BaseEntity {
   plantName: string;
 
   @Column()
+  plantType: string;
+
+  @Column()
   photo: string;
 
   // @ManyToOne((type) => User, (user) => user.id)
