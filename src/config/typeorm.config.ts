@@ -22,3 +22,4 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
 };
 //TODO
 //use env later instead of hard code
+//change to false later : synchronize: true,

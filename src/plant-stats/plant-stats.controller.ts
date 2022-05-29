@@ -3,6 +3,8 @@ import { PlantStatsService } from './plant-stats.service';
 
 @Controller('plant-stats')
 export class PlantStatsController {
+  constructor(private readonly service: PlantStatsService) {}
+
   @Get('/plantId') //double check route
   getStatsByPlantId() {
     return 'Stats by Plant Id'; // try to get all stats for that plant
@@ -11,6 +13,11 @@ export class PlantStatsController {
   @Get('/:plantStatsId')
   getStatbyId() {
     return 'Get stat by id';
+  }
+
+  @Get('/')
+  getStatAll() {
+    return this.service.getStatAll();
   }
 
   @Post()
