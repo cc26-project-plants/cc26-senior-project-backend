@@ -11,10 +11,10 @@ export class Plants extends BaseEntity {
 
   @Column()
   photo: string;
-  
-  @ManyToOne(type => User, user => user.id)
+
+  @ManyToOne((type) => User, (user) => user.id)
   user: User;
 
-  @OneToMany(type => PlantStats, plantStats => plantStats.id)
-  plantStats: PlantStats;
-};
+  // @OneToMany(type => PlantStats, plantStats => plantStats.id)
+  // plantStats: PlantStats;
+}
