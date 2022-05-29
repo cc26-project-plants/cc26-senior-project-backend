@@ -8,9 +8,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   password: 'O23Ak!10',
   database: 'projectplant',
   logging: true,
-  // entities: [__dirname + '/../**/*.entity.ts'],
   synchronize: true, //change to false later
-  // migrations: ["dist/migration/**/*.js"],
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/migration/*.js'],
   subscribers: ['src/subscriber/**/*.ts'],

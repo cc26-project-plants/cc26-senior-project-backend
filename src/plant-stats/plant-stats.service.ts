@@ -35,16 +35,20 @@ export class PlantStatsService {
     data.soilWaterLevel = posted.soilWaterLevel;
     data.humidityLevel = posted.humidityLevel;
     data.temperature = posted.temperature;
-    // data.time = time;
     return await this.plantstatsRepository.insert(data);
   }
 }
 
-// Column     |            Type             | Collation | Nullable | Default
-// ----------------+-----------------------------+-----------+----------+---------
-//  id             | integer                     |           | not null |
-//  lightLevel     | double precision            |           | not null |
-//  soilWaterLevel | double precision            |           | not null |
-//  humidityLevel  | double precision            |           | not null |
-//  temperature    | integer                     |           | not null |
-//  time           | timestamp without time zone |           | not null |
+// projectplant=# \d plant_stats
+//                             Table "public.plant_stats"
+//      Column     |              Type              | Collation | Nullable | Default
+// ----------------+--------------------------------+-----------+----------+---------
+//  id             | integer                        |           | not null |
+//  lightLevel     | double precision               |           | not null |
+//  soilWaterLevel | double precision               |           | not null |
+//  humidityLevel  | double precision               |           | not null |
+//  temperature    | integer                        |           | not null |
+//  created_at     | timestamp(0) without time zone |           | not null | now()
+//  updated_at     | timestamp(0) without time zone |           | not null | now()
+// Indexes:
+//     "PK_6f9498f18f9fb0329c839bf8b72" PRIMARY KEY, btree (id)

@@ -34,8 +34,5 @@ export class PlantStats extends BaseEntity {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', precision: 0 })
   readonly updatedAt: Date;
-
-  // @Column('timestamp')
-  // time: Date;
 }
 //double check typeorm types for psql

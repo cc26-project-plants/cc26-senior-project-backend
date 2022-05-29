@@ -3,5 +3,4 @@ export class CreatePlantStatsDto {
   soilWaterLevel: number;
   humidityLevel: number;
   temperature: number;
-  //   time: Date;
 }
