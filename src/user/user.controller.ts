@@ -5,6 +5,8 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
+  constructor(private readonly service: UserService) {}
+
   @Get()
   getUsers() {
     return 'Get User Test'; // Don't actually give this data

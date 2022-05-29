@@ -7,7 +7,17 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: 'postgres',
   password: 'O23Ak!10',
   database: 'projectplant',
-  entities: [__dirname + '/../**/*.entity.ts'],
+  logging: true,
   synchronize: true, //change to false later
-}; //use env later instead of hard code
+  entities: ['dist/**/*.entity.js'],
+  migrations: ['dist/migration/*.js'],
+  subscribers: ['src/subscriber/**/*.ts'],
+  // cli: {
+  //   entitiesDir: 'src/entity',
+  //   migrationsDir: 'src/migration',
+  //   subscribersDir: 'src/subscriber',
+  // },
+};
 //TODO
+//use env later instead of hard code
+//change to false later : synchronize: true,

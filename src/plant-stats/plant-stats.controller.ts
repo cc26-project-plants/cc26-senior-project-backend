@@ -1,22 +1,44 @@
-import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Param,
+  Body,
+  HttpCode,
+} from '@nestjs/common';
 import { PlantStatsService } from './plant-stats.service';
+import { CreatePlantStatsDto } from './create-plant-stats-dto';
 
 @Controller('plant-stats')
 export class PlantStatsController {
-  @Get('/plantId') //double check route
-  getStatsByPlantId() {
-    return 'Stats by Plant Id'; // try to get all stats for that plant
+  constructor(private readonly service: PlantStatsService) {}
+
+  @Get('/')
+  getStatAll() {
+    return this.service.getStatAll();
   }
 
-  @Get('/:plantStatsId')
-  getStatbyId() {
-    return 'Get stat by id';
+  @Get('/latest')
+  getStatLatest() {
+    return this.service.getStatLatest();
   }
+
+  // @Get(':id') //double check route
+  // getStatsByPlantId(@Param() params): any {
+  //   console.log(params.id);
+  //   return this.service.getStatsByPlantId(params.id); // try to get all stats for that plant
+  // }
+
+  // @Get('/:plantStatsId')
+  // getStatbyId() {
+  //   return 'Get stat by id';
+  // }
 
   @Post()
-  createStats(@Body() body) {
-    console.log(body);
-    return 'Create Stats'; //should create stats and send data to database
+  async createStats(@Body() body: CreatePlantStatsDto) {
+    console.log('postedBody', body); // check the struncture of "request body"
+    return await this.service.updateStas(body);
   }
 
   @Put('/:plantStatsId')

@@ -1,12 +1,21 @@
 import { Plants } from 'src/plants/plants.entity';
-import { BaseEntity, ManyToOne, PrimaryColumn, Column } from 'typeorm';
+import {
+  BaseEntity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Column,
+  Entity,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
+@Entity()
 export class PlantStats extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne((type) => Plants, (plant) => plant.id)
-  plant: Plants;
+  // @ManyToOne((type) => Plants, (plant) => plant.id)
+  // plant: Plants;
 
   @Column('float')
   lightLevel: number;
@@ -20,7 +29,10 @@ export class PlantStats extends BaseEntity {
   @Column()
   temperature: number;
 
-  @Column('timestamp')
-  time: Date;
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
+  readonly createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', precision: 0 })
+  readonly updatedAt: Date;
 }
 //double check typeorm types for psql
