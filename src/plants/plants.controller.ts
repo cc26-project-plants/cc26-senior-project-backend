@@ -5,6 +5,7 @@ import { PlantsService } from './plants.service';
 
 @Controller('plants')
 export class PlantsController {
+  constructor(private readonly service: PlantsService) {}
   @Get('/:plantId')
   getPlantById() {
     return 'Plant by Id';

@@ -29,6 +29,6 @@ export class User extends BaseEntity {
   @Column()
   lastName: string;
 
-  @OneToMany((type) => Plants, (plants) => plants.id)
-  plants: Plants; //double check documentation
+  // @OneToMany((type) => Plants, (plants) => plants.id)
+  // plants: Plants; //double check documentation
 }
