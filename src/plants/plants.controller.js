@@ -1,7 +1,4 @@
-import Plants from "./plants.schema.js";
 import plantsModel from "./plants.model.js";
-
-// plantsModel.someFunc
 
 export default {
   async getAllPlants(req, res) {

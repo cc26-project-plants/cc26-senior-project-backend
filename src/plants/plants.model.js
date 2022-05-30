@@ -1,4 +1,4 @@
-import Plants from "./plants.schema.js";
+import db from "../firestore.js";
 
 export default {
   async getAllPlants() {
@@ -11,10 +11,11 @@ export default {
     }
   },
 
-  async createPlant(newData) {
+  async createPlant(data) {
     try {
-      const newPlants = await Plants.create(newData);
-      return newPlants;
+      const newPlant = await Plants.create(data);
+      if (!newPlant) return false;
+      return newPlant;
     } catch (error) {
       return false;
     }
