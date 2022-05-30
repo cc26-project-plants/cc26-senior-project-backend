@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.NODE_DOCKER_PORT || 8080;
 
 app.use("/plants", plantsRoutes);
 app.use("/plantStats", plantStatsRoutes);
