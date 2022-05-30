@@ -12,17 +12,6 @@ export default {
     res.status(200).send({ success: true, data: allPlantStats });
   },
 
-  async getLatest12PlantStats(req, res) {
-    const id = req.params.id;
-    const latest12PlantStats = await plantStatsModel.getLatest12PlantStats(id);
-
-    if (!latest12PlantStats) {
-      res.status(400).send({ success: false });
-      return;
-    }
-    res.status(200).send({ success: true, data: latest12PlantStats });
-  },
-
   async getById(req, res) {
     const id = req.params.id;
     console.log("id", req.params.id);
@@ -33,6 +22,17 @@ export default {
       return;
     }
     res.status(200).send({ success: true, data: filteredPlantStats });
+  },
+
+  async getLatest12PlantStats(req, res) {
+    const id = req.params.id;
+    const latest12PlantStats = await plantStatsModel.getLatest12PlantStats(id);
+
+    if (!latest12PlantStats) {
+      res.status(400).send({ success: false });
+      return;
+    }
+    res.status(200).send({ success: true, data: latest12PlantStats });
   },
 
   async createPlantStats(req, res) {
