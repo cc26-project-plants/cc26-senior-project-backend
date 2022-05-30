@@ -2,10 +2,7 @@ import mongoose from "mongoose";
 
 const plantsSchema = mongoose.Schema(
   {
-    userid: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-    },
+    userid: String,
     plantName: String,
     plantType: String,
   },
