@@ -2,10 +2,12 @@ FROM node:latest
 
 WORKDIR /app
 
+COPY package.json .
+
+RUN npm install
+
 COPY . .
 
-RUN yarn install
+CMD ["npm", "start"]
 
-CMD ["yarn", "start:dev"]
-
-EXPOSE 8080
+# EXPOSE 8080
