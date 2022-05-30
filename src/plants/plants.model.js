@@ -1,4 +1,5 @@
+import db from "../firestore.js";
 
 export default {
-  someFunc() {}
+  getAllPlants() {}
 };
