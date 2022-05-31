@@ -32,7 +32,6 @@ export default {
       id: foundPlantStats.id,
       data: foundPlantStats.data(),
     };
-
     res.status(200).send({ success: true, data: extractedPlantStats });
   },
 
