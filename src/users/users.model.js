@@ -1,4 +1,4 @@
-import Users from "./users.schema.js";
+import db from "../firestore.js";
 
 export default {
   async getAllUsers() {
@@ -11,9 +11,9 @@ export default {
     }
   },
 
-  async getByUsername(givenName) {
+  async getByUsername(username) {
     try {
-      const filteredUser = await Users.find({ username: givenName });
+      const filteredUser = await Users.find({ username: username });
       console.log("filteredUser", filteredUser);
       if (!filteredUser) return false;
       return filteredUser;
