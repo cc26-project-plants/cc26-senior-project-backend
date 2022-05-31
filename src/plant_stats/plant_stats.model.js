@@ -29,7 +29,7 @@ export default {
   //   try {
   //     const filteredPlantStats = await PlantStats.find({ plantId: id });
   //     if (!filteredPlantStats) return false;
-  //     const latest12PlantStats = filteredPlantStats.slice(0, 11);
+  //     const latest12PlantStats = filteredPlantStats.slice(0, 12);
   //     return latest12PlantStats;
   //   } catch (error) {
   //     return false;
@@ -46,7 +46,7 @@ export default {
     }
   },
 
-  async updatePlantStats(data, id) {
+  async updatePlantStats(id, data) {
     try {
       const plantStatsRef = db.collection("plant_stats").doc(id);
       console.log("plantStatsRef", plantStatsRef);

@@ -4,27 +4,36 @@ export default {
   async getAllPlantStats(req, res) {
     const allPlantStats = await plantStatsModel.getAllPlantStats();
 
-    console.log("plantStats controller");
     if (!allPlantStats) {
       res.status(400).send({ success: false });
       return;
     }
-    // allPlantStats.forEach(doc => {
-    //   console.log(doc.id, '=>', doc.data());
-    // });
-    res.status(200).send({ success: true, data: allPlantStats });
+
+    const extractedPlantStats = [];
+    allPlantStats.forEach(doc => {
+      extractedPlantStats.push({
+        id: doc.id,
+        data: doc.data()
+      });
+    });
+    res.status(200).send({ success: true, data: extractedPlantStats });
   },
 
   async getById(req, res) {
     const id = req.params.id;
     console.log("id", req.params.id);
-    const filteredPlantStats = await plantStatsModel.getById(id);
+    const foundPlantStats = await plantStatsModel.getById(id);
 
-    if (!filteredPlantStats) {
+    if (!foundPlantStats) {
       res.status(400).send({ success: false });
       return;
     }
-    res.status(200).send({ success: true, data: filteredPlantStats });
+
+    const extractedPlantStats = {
+      id: foundPlantStats.id,
+      data: foundPlantStats.data()
+    };
+    res.status(200).send({ success: true, data: extractedPlantStats });
   },
 
   // async getLatest12PlantStats(req, res) {
@@ -35,7 +44,15 @@ export default {
   //     res.status(400).send({ success: false });
   //     return;
   //   }
-  //   res.status(200).send({ success: true, data: latest12PlantStats });
+
+  //   const extractedPlantStats = [];
+  //   latest12PlantStats.forEach(doc => {
+  //     extractedPlantStats.push({
+  //       id: doc.id,
+  //       data: doc.data()
+  //     });
+  //   });
+  //   res.status(200).send({ success: true, data: extractedPlantStats });
   // },
 
   async createPlantStats(req, res) {
@@ -46,20 +63,29 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-    res.status(200).send({ success: true, data: newPlantStats });
+
+    const extractedPlantStats = {
+      id: foundPlantStats.id,
+      data: foundPlantStats.data()
+    };
+    res.status(200).send({ success: true, data: extractedPlantStats });
   },
 
   async updatePlantStats(req, res) {
     const data = req.body;
     const id = req.params.id;
-    console.log("databody", data);
-    console.log("paramid", id);
     data.timestamp = new Date();
-    const newPlantStats = await plantStatsModel.updatePlantStats(data, id);
-    if (!newPlantStats) {
+    const updatedPlantStats = await plantStatsModel.updatePlantStats(id, data);
+
+    if (!updatedPlantStats) {
       res.status(400).send({ success: false });
       return;
     }
-    res.status(200).send({ success: true, data: newPlantStats });
+
+    const extractedPlantStats = {
+      id: updatedPlantStats.id,
+      data: updatedPlantStats.data()
+    };
+    res.status(200).send({ success: true, data: extractedPlantStats });
   },
 };
