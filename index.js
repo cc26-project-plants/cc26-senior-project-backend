@@ -1,5 +1,5 @@
 import express from "express";
-import "dotenv/config";
+import 'dotenv/config';
 import cors from "cors";
 
 import plantsRoutes from "./src/routes/plants.js";
@@ -17,5 +17,5 @@ app.use("/plantStats", plantStatsRoutes);
 app.use("/users", usersRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server listening on http://localhost:${PORT}`);
 });
