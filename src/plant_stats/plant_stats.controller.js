@@ -10,10 +10,10 @@ export default {
     }
 
     const extractedPlantStats = [];
-    allPlantStats.forEach(doc => {
+    allPlantStats.forEach((doc) => {
       extractedPlantStats.push({
         id: doc.id,
-        data: doc.data()
+        data: doc.data(),
       });
     });
     res.status(200).send({ success: true, data: extractedPlantStats });
@@ -21,7 +21,6 @@ export default {
 
   async getById(req, res) {
     const id = req.params.id;
-    console.log("id", req.params.id);
     const foundPlantStats = await plantStatsModel.getById(id);
 
     if (!foundPlantStats) {
@@ -31,8 +30,9 @@ export default {
 
     const extractedPlantStats = {
       id: foundPlantStats.id,
-      data: foundPlantStats.data()
+      data: foundPlantStats.data(),
     };
+
     res.status(200).send({ success: true, data: extractedPlantStats });
   },
 
@@ -52,6 +52,7 @@ export default {
   //       data: doc.data()
   //     });
   //   });
+  // console.log("querySnapshot", extractedPlantStats.data.sensorData);
   //   res.status(200).send({ success: true, data: extractedPlantStats });
   // },
 
@@ -63,12 +64,7 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-
-    const extractedPlantStats = {
-      id: foundPlantStats.id,
-      data: foundPlantStats.data()
-    };
-    res.status(200).send({ success: true, data: extractedPlantStats });
+    res.status(200).send({ success: true, data: newPlantStats });
   },
 
   async updatePlantStats(req, res) {
@@ -81,11 +77,6 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-
-    const extractedPlantStats = {
-      id: updatedPlantStats.id,
-      data: updatedPlantStats.data()
-    };
-    res.status(200).send({ success: true, data: extractedPlantStats });
+    res.status(200).send({ success: true, data: updatedPlantStats });
   },
 };

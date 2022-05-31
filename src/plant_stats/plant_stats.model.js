@@ -49,7 +49,6 @@ export default {
   async updatePlantStats(id, data) {
     try {
       const plantStatsRef = db.collection("plant_stats").doc(id);
-      console.log("plantStatsRef", plantStatsRef);
       const newPlantStats = await plantStatsRef.update({
         sensorData: FieldValue.arrayUnion(data),
       });
@@ -57,7 +56,6 @@ export default {
       if (!newPlantStats) return false;
       return newPlantStats;
     } catch (error) {
-      console.log("anything wrong in newPlantstas");
       return false;
     }
   },
