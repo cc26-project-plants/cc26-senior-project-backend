@@ -48,4 +48,18 @@ export default {
     }
     res.status(200).send({ success: true, data: newPlantStats });
   },
+
+  async updatePlantStats(req, res) {
+    const data = req.body;
+    const id = req.params.id;
+    console.log("databody", data);
+    console.log("paramid", id);
+    data.timestamp = new Date();
+    const newPlantStats = await plantStatsModel.updatePlantStats(data, id);
+    if (!newPlantStats) {
+      res.status(400).send({ success: false });
+      return;
+    }
+    res.status(200).send({ success: true, data: newPlantStats });
+  },
 };
