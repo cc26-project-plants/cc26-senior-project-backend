@@ -25,16 +25,19 @@ export default {
     }
   },
 
-  // async getLatest12PlantStats(id) {
-  //   try {
-  //     const filteredPlantStats = await PlantStats.find({ plantId: id });
-  //     if (!filteredPlantStats) return false;
-  //     const latest12PlantStats = filteredPlantStats.slice(0, 12);
-  //     return latest12PlantStats;
-  //   } catch (error) {
-  //     return false;
-  //   }
-  // },
+  async getLatest12PlantStats(id) {
+    try {
+      const filteredPlantStats = await db
+        .collection("plant_stats")
+        .doc(id)
+        .get();
+      // console.log("filteredData", filteredPlantStats);
+      if (!filteredPlantStats) return false;
+      return filteredPlantStats;
+    } catch (error) {
+      return false;
+    }
+  },
 
   async createPlantStats(data) {
     try {

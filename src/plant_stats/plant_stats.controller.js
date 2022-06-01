@@ -1,4 +1,5 @@
 import plantStatsModel from "./plant_stats.model.js";
+import { query, orderBy, startAt } from "firebase/firestore";
 
 export default {
   async getAllPlantStats(req, res) {
@@ -36,25 +37,25 @@ export default {
     res.status(200).send({ success: true, data: extractedPlantStats });
   },
 
-  // async getLatest12PlantStats(req, res) {
-  //   const id = req.params.id;
-  //   const latest12PlantStats = await plantStatsModel.getLatest12PlantStats(id);
+  async getLatest12PlantStats(req, res) {
+    const id = req.params.id;
+    const latest12PlantStats = await plantStatsModel.getLatest12PlantStats(id);
 
-  //   if (!latest12PlantStats) {
-  //     res.status(400).send({ success: false });
-  //     return;
-  //   }
+    if (!latest12PlantStats) {
+      res.status(400).send({ success: false });
+      return;
+    }
 
-  //   const extractedPlantStats = [];
-  //   latest12PlantStats.forEach(doc => {
-  //     extractedPlantStats.push({
-  //       id: doc.id,
-  //       data: doc.data()
-  //     });
-  //   });
-  // console.log("querySnapshot", extractedPlantStats.data.sensorData);
-  //   res.status(200).send({ success: true, data: extractedPlantStats });
-  // },
+    const extractedPlantStats = {
+      id: latest12PlantStats.id,
+      data: latest12PlantStats.data(),
+    };
+    const sortedData = extractedPlantStats.data.sensorData;
+    const querylength = sortedData.length - 12;
+    const slicedData = sortedData.slice(querylength);
+
+    res.status(200).send({ success: true, data: slicedData });
+  },
 
   async createPlantStats(req, res) {
     const data = req.body;

@@ -11,6 +11,16 @@ export default {
     }
   },
 
+  async getbyId(id) {
+    try {
+      const filteredPlant = await db.collection("plants").doc(id).get();
+      if (!filteredPlant) return false;
+      return filteredPlant;
+    } catch (error) {
+      return false;
+    }
+  },
+
   async createPlant(data) {
     try {
       const newPlant = await Plants.create(data);
