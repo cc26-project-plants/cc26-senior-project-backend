@@ -11,12 +11,12 @@ export default {
     }
   },
 
-  async getByUsername(username) {
+  async getByEmail(userId) {
     try {
-      const filteredUser = await db
-        .collection("users")
-        .get({ username: username });
-      console.log("filteredUser", filteredUser);
+      const usersRef = await db.collection("users");
+      // console.log("here is Usermodel!", userId);
+      const filteredUser = await usersRef.doc(userId).get();
+      // console.log("filtered on userModel", filteredUser.data());
       if (!filteredUser) return false;
       return filteredUser;
     } catch (error) {
@@ -28,7 +28,7 @@ export default {
     try {
       const newUser = db.collection("users").doc();
       const res = await newUser.set(
-        { username: data.userName, plantId: data.plantId },
+        { username: data.userName, email: data.email, plantId: data.plantId },
         { merge: true },
       );
       if (!newUser) return false;
