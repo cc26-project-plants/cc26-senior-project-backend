@@ -26,22 +26,22 @@ export default {
     try {
       const newPlantRef = await db.collection("plants").doc(data.plantId);
       const targettype = data.plantType;
-      console.log("type", data.plantType);
-      const profile = profiles[targettype];
-      console.log("profile:", profile);
+      // console.log("type", data.plantType);
+      const setProfile = profiles[targettype];
+      console.log("profile:", setProfile);
 
       const resPlant = await newPlantRef.set(
         {
           plantname: data.plantName,
           type: data.plantType,
-          profile: profile,
+          profile: setProfile,
           userId: userId,
         },
         { merge: true },
       );
 
       if (!resPlant) return false;
-      return resPlant;
+      return setProfile;
     } catch (error) {
       return false;
     }
