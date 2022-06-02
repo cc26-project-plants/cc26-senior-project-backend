@@ -1,5 +1,4 @@
 import plantStatsModel from "./plant_stats.model.js";
-import { query, orderBy, startAt } from "firebase/firestore";
 
 export default {
   async getAllPlantStats(req, res) {

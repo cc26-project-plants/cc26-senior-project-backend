@@ -1,4 +1,5 @@
 import db from "../firestore.js";
+import profiles from "../profiles/profiles.js";
 
 export default {
   async getAllPlants() {
@@ -24,12 +25,16 @@ export default {
   async createPlant(data, userId) {
     try {
       const newPlantRef = await db.collection("plants").doc(data.plantId);
-      //check data.plantType
-      //extract profile data corresponding the data.plantType from anyware.
+      const targettype = data.plantType;
+      console.log("type", data.plantType);
+      const profile = profiles[targettype];
+      console.log("profile:", profile);
+
       const resPlant = await newPlantRef.set(
         {
           plantname: data.plantName,
           type: data.plantType,
+          profile: profile,
           userId: userId,
         },
         { merge: true },
@@ -41,4 +46,5 @@ export default {
       return false;
     }
   },
+  //addplant
 };
