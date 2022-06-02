@@ -3,7 +3,7 @@ import db from "../firestore.js";
 export default {
   async getAllPlants() {
     try {
-      const allPlants = await Plants.find({});
+      const allPlants = await db.collection("plants").get();
       if (!allPlants) return false;
       return allPlants;
     } catch (error) {
@@ -21,11 +21,22 @@ export default {
     }
   },
 
-  async createPlant(data) {
+  async createPlant(data, userId) {
     try {
-      const newPlant = await Plants.create(data);
-      if (!newPlant) return false;
-      return newPlant;
+      const newPlantRef = await db.collection("plants").doc(data.plantId);
+      //check data.plantType
+      //extract profile data corresponding the data.plantType from anyware.
+      const resPlant = await newPlantRef.set(
+        {
+          plantname: data.plantName,
+          type: data.plantType,
+          userId: userId,
+        },
+        { merge: true },
+      );
+
+      if (!resPlant) return false;
+      return resPlant;
     } catch (error) {
       return false;
     }

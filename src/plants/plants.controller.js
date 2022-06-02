@@ -4,8 +4,22 @@ export default {
   async getAllPlants(req, res) {
     try {
       // res.status(200).send("response from Plants");
-      const allPlants = await Plants.find({});
-      res.status(200).send({ success: true, data: allPlants });
+      const allPlants = await plantsModel.getAllPlants();
+
+      if (!allPlants) {
+        res.status(400).send({ success: false });
+        return;
+      }
+
+      const extractedPlants = [];
+      allPlants.forEach((doc) => {
+        extractedPlants.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+
+      res.status(200).send({ success: true, data: extractedPlants });
     } catch (error) {
       res.status(400).send({ success: false });
     }
