@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", plantStatsController.getAllPlantStats);
 router.get("/:id", plantStatsController.getById);
-// router.get("/:id/latest", plantStatsController.getLatest12PlantStats);
+router.get("/:id/latest", plantStatsController.getLatest12PlantStats);
 router.post("/", plantStatsController.createPlantStats);
 router.post("/:id", plantStatsController.updatePlantStats);
 
