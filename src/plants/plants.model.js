@@ -12,7 +12,7 @@ export default {
     }
   },
 
-  async getbyId(id) {
+  async getById(id) {
     try {
       const filteredPlant = await db.collection("plants").doc(id).get();
       if (!filteredPlant.data()) return false;

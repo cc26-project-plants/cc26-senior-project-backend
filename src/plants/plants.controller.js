@@ -5,7 +5,6 @@ import plantsModel from "./plants.model.js";
 export default {
   async getAllPlants(req, res) {
     try {
-      // res.status(200).send("response from Plants");
       const allPlants = await plantsModel.getAllPlants();
 
       if (!allPlants) {
@@ -35,12 +34,7 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-    const extractedPlants = {
-      id: foundPlants.id,
-      data: foundPlants.data(),
-    };
-
-    res.status(200).send({ success: true, data: extractedPlants });
+    res.status(200).send({ success: true, data: foundPlants });
   },
 
   async createPlant(req, res) {
