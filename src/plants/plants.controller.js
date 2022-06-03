@@ -1,9 +1,10 @@
+import email_to_userIdModel from "../email_to_userId/email_to_userId.model.js";
+import usersModel from "../users/users.model.js";
 import plantsModel from "./plants.model.js";
 
 export default {
   async getAllPlants(req, res) {
     try {
-      // res.status(200).send("response from Plants");
       const allPlants = await plantsModel.getAllPlants();
 
       if (!allPlants) {
@@ -33,12 +34,7 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-    const extractedPlants = {
-      id: foundPlants.id,
-      data: foundPlants.data(),
-    };
-
-    res.status(200).send({ success: true, data: extractedPlants });
+    res.status(200).send({ success: true, data: foundPlants });
   },
 
   async createPlant(req, res) {
@@ -50,5 +46,29 @@ export default {
       return;
     }
     res.status(200).send({ success: true, data: newPlant });
+  },
+
+  async addPlant(req, res) {
+    const data = req.body;
+    const userIdFromEmail = await email_to_userIdModel.getById(data.email);
+    const newPlant = await plantsModel.addPlant(data, userIdFromEmail.userId);
+    const updateUserInfo = await usersModel.addPlant(
+      data,
+      userIdFromEmail.userId,
+    );
+
+    const updatedUserData = await usersModel.getById(userIdFromEmail.userId);
+
+    const resData = await {
+      userName: updatedUserData.username,
+      plantName: updatedUserData.plantName,
+      plantId: updatedUserData.plantId,
+    };
+
+    if (!newPlant) {
+      res.status(400).send({ success: false });
+      return;
+    }
+    res.status(200).send({ success: true, data: resData });
   },
 };
