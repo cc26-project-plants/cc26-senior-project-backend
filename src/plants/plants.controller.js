@@ -28,6 +28,7 @@ export default {
 
   async getById(req, res) {
     const id = req.params.id;
+    //checkExistenceOfDocument -- check if they give BE request with email.
     const foundPlants = await plantsModel.getById(id);
 
     if (!foundPlants) {

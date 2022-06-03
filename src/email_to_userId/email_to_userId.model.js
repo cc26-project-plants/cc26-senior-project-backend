@@ -23,13 +23,26 @@ export default {
 
   async createEmailToUserIds(userId, email) {
     try {
-      const newEmailToUserId = db
+      const newEmailToUserId = await db
         .collection("email_to_userId")
         .doc(email)
         .set({ userId: userId }, { merge: true });
 
       if (!newEmailToUserId) return false;
       return newEmailToUserId;
+    } catch (error) {
+      return false;
+    }
+  },
+
+  async checkExistenceOfDocument(email) {
+    try {
+      const emailToUserIdRef = await db
+        .collection("email_to_userId")
+        .doc(email)
+        .get();
+      if (!emailToUserIdRef) return false;
+      return emailToUserIdRef;
     } catch (error) {
       return false;
     }
