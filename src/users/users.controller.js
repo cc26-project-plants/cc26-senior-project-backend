@@ -28,9 +28,10 @@ export default {
 
   async getByEmail(req, res) {
     const email = req.params.id;
+    // checkExistenceOfDocument;
     const userIdObj = await emailToUserIdModel.getById(email);
     const filteredUser = await usersModel.getByEmail(userIdObj.userId);
-    console.log("filtered USer", filteredUser);
+    // console.log("filtered USer", filteredUser);
 
     const resData = await {
       userName: filteredUser.userName,
@@ -57,6 +58,7 @@ export default {
 
     const createdUserData = await usersModel.getById(userId);
     const resData = await {
+      userId: newUser.id,
       userName: createdUserData.userName,
       plantName: createdUserData.plantName,
       plantId: createdUserData.plantId,
