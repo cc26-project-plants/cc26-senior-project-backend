@@ -14,8 +14,10 @@ export default {
 
   async getByEmail(email) {
     try {
+      // console.log("email on user Model", email);
       const usersRef = await db.collection("users");
       const filteredId = await usersRef.doc(email).get();
+      // console.log("filtered", filteredId.data());
       if (!filteredId.data()) return false;
       return filteredId.data();
     } catch (error) {

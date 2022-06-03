@@ -30,16 +30,12 @@ export default {
     const email = req.params.id;
     const userIdObj = await emailToUserIdModel.getById(email);
     const filteredUser = await usersModel.getByEmail(userIdObj.userId);
-
-    const userResult = await filteredUser.data();
-    const plantInfo = await plantsModel.getbyId(userResult.plantId);
-    const plantResult = await plantInfo.data();
+    console.log("filtered USer", filteredUser);
 
     const resData = await {
-      userName: userResult.username,
-      plantName: plantResult.plantname,
-      plantType: plantResult.type,
-      profile: plantResult.profile,
+      userName: filteredUser.userName,
+      plantName: filteredUser.plantName,
+      plantId: filteredUser.plantId,
     };
 
     if (!filteredUser) {
