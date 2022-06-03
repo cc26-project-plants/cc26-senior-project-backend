@@ -15,8 +15,8 @@ export default {
   async getbyId(id) {
     try {
       const filteredPlant = await db.collection("plants").doc(id).get();
-      if (!filteredPlant) return false;
-      return filteredPlant;
+      if (!filteredPlant.data()) return false;
+      return filteredPlant.data();
     } catch (error) {
       return false;
     }
@@ -26,9 +26,7 @@ export default {
     try {
       const newPlantRef = await db.collection("plants").doc(data.plantId);
       const targettype = data.plantType;
-      // console.log("type", data.plantType);
       const setProfile = profiles[targettype];
-      console.log("profile:", setProfile);
 
       const resPlant = await newPlantRef.set(
         {
@@ -46,5 +44,27 @@ export default {
       return false;
     }
   },
-  //addplant
+
+  async addPlant(data, userId) {
+    try {
+      const newPlantRef = await db.collection("plants").doc(data.plantId);
+      const targettype = data.plantType;
+      const setProfile = profiles[targettype];
+
+      const newPlant = await newPlantRef.set(
+        {
+          plantName: data.plantName,
+          type: data.plantType,
+          profile: setProfile,
+          userId: userId,
+        },
+        { merge: true },
+      );
+
+      if (!newPlant) return false;
+      return newPlant;
+    } catch (error) {
+      return false;
+    }
+  },
 };

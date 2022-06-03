@@ -1,4 +1,5 @@
 import db from "../firestore.js";
+import { FieldValue } from "@google-cloud/firestore";
 
 export default {
   async getAllUsers() {
@@ -11,14 +12,22 @@ export default {
     }
   },
 
-  async getByEmail(userId) {
+  async getByEmail(email) {
     try {
       const usersRef = await db.collection("users");
-      // console.log("here is Usermodel!", userId);
-      const filteredUser = await usersRef.doc(userId).get();
-      // console.log("filtered on userModel", filteredUser.data());
-      if (!filteredUser) return false;
-      return filteredUser;
+      const filteredId = await usersRef.doc(email).get();
+      if (!filteredId.data()) return false;
+      return filteredId.data();
+    } catch (error) {
+      return false;
+    }
+  },
+
+  async getById(userId) {
+    try {
+      const filteredId = await db.collection("users").doc(userId).get();
+      if (!filteredId.data()) return false;
+      return filteredId.data();
     } catch (error) {
       return false;
     }
@@ -26,13 +35,33 @@ export default {
 
   async createUser(data) {
     try {
-      const newUser = db.collection("users").doc();
-      const res = await newUser.set(
-        { username: data.userName, email: data.email, plantId: data.plantId },
+      const origUsersRef = db.collection("users").doc();
+      const addUserInfo = await origUsersRef.set(
+        { userName: data.userName, email: data.email },
         { merge: true },
       );
-      if (!newUser) return false;
-      return newUser;
+      const newUserId = origUsersRef.id;
+      const addPlantInfo = await origUsersRef.update({
+        plantName: FieldValue.arrayUnion(data.plantName),
+        plantId: FieldValue.arrayUnion(data.plantId),
+      });
+
+      if (!origUsersRef) return false;
+      return origUsersRef;
+    } catch (error) {
+      return false;
+    }
+  },
+
+  async addPlant(data, userId) {
+    try {
+      const origUsersRef = db.collection("users").doc(userId);
+      const addPlantInfo = await origUsersRef.update({
+        plantName: FieldValue.arrayUnion(data.plantName),
+        plantId: FieldValue.arrayUnion(data.plantId),
+      });
+      if (!origUsersRef) return false;
+      return origUsersRef;
     } catch (error) {
       return false;
     }

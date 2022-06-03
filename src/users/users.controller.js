@@ -59,11 +59,11 @@ export default {
       data.email,
     );
 
+    const createdUserData = await usersModel.getById(userId);
     const resData = await {
-      userName: data.userName,
-      plantName: data.plantName,
-      planttype: data.plantType,
-      profile: plantProfile,
+      userName: createdUserData.userName,
+      plantName: createdUserData.plantName,
+      plantId: createdUserData.plantId,
     };
 
     if (!newUser) {
@@ -72,5 +72,4 @@ export default {
     }
     res.status(200).send({ success: true, data: resData });
   },
-  // updateUser? for adding new plants
 };
