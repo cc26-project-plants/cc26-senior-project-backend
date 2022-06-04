@@ -41,8 +41,8 @@ export default {
         .collection("email_to_userId")
         .doc(email)
         .get();
-      if (!emailToUserIdRef) return false;
-      return emailToUserIdRef;
+      if (!emailToUserIdRef.data()) return false;
+      return emailToUserIdRef.data();
     } catch (error) {
       return false;
     }

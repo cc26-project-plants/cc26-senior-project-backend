@@ -57,7 +57,7 @@ export default {
 
   async addPlant(data, userId) {
     try {
-      const origUsersRef = db.collection("users").doc(userId);
+      const origUsersRef = await db.collection("users").doc(userId);
       const addPlantInfo = await origUsersRef.update({
         plantName: FieldValue.arrayUnion(data.plantName),
         plantId: FieldValue.arrayUnion(data.plantId),
@@ -68,4 +68,15 @@ export default {
       return false;
     }
   },
+
+  // async loginUser(userId) {
+  //   try {
+  //     const userRef = await db.collection("users").doc(userId).get();
+  //     const userInfo = await userRef.data();
+  //     if (!userInfo) return false;
+  //     return userInfo;
+  //   } catch (error) {
+  //     return false;
+  //   }
+  // },
 };
