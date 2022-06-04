@@ -42,6 +42,7 @@ export default {
     const filteredUser = await usersModel.getByEmail(userIdObj.userId);
 
     const resData = await {
+      userId: userIdObj.userId,
       userName: filteredUser.userName,
       plantName: filteredUser.plantName,
       plantId: filteredUser.plantId,
