@@ -42,7 +42,7 @@ export default {
         .doc(email)
         .get();
       if (!emailToUserIdRef.data()) return false;
-      return emailToUserIdRef;
+      return emailToUserIdRef.data();
     } catch (error) {
       return false;
     }
