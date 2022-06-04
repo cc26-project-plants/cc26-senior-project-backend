@@ -14,7 +14,6 @@ export default {
 
   async getById(id) {
     try {
-      // checkExistenceOfDocument;
       const filteredPlantStats = await db
         .collection("plant_stats")
         .doc(id)

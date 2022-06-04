@@ -1,6 +1,6 @@
 import plantsModel from "../plants/plants.model.js";
 import usersModel from "./users.model.js";
-import emailToUserIdModel from "../email_to_userId/email_to_userId.model.js";
+import email_to_userIdModel from "../email_to_userId/email_to_userId.model.js";
 
 export default {
   async getAllUsers(req, res) {
@@ -28,10 +28,18 @@ export default {
 
   async getByEmail(req, res) {
     const email = req.params.id;
-    // checkExistenceOfDocument;
-    const userIdObj = await emailToUserIdModel.getById(email);
+    ////check sign up status
+    const checkSignUp = await email_to_userIdModel.checkExistenceOfDocument(
+      email,
+    );
+    if (!checkSignUp) {
+      res.status(400).send({ success: false });
+      return;
+    }
+    ////check sign up status
+
+    const userIdObj = await email_to_userIdModel.getById(email);
     const filteredUser = await usersModel.getByEmail(userIdObj.userId);
-    // console.log("filtered USer", filteredUser);
 
     const resData = await {
       userName: filteredUser.userName,
@@ -51,7 +59,7 @@ export default {
     const newUser = await usersModel.createUser(data);
     const userId = await newUser.id;
     const plantProfile = await plantsModel.createPlant(data, userId);
-    const newEmailToUserId = await emailToUserIdModel.createEmailToUserIds(
+    const newEmailToUserId = await email_to_userIdModel.createEmailToUserIds(
       userId,
       data.email,
     );

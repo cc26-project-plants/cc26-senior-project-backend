@@ -1,3 +1,4 @@
+import email_to_userIdModel from "../email_to_userId/email_to_userId.model.js";
 import plantStatsModel from "./plant_stats.model.js";
 
 export default {
@@ -20,6 +21,17 @@ export default {
   },
 
   async getById(req, res) {
+    const data = req.body;
+    ////check sign up status
+    const checkSignUp = await email_to_userIdModel.checkExistenceOfDocument(
+      data.email,
+    );
+    if (!checkSignUp) {
+      res.status(400).send({ success: false });
+      return;
+    }
+    ////check sign up status
+
     const id = req.params.id;
     const foundPlantStats = await plantStatsModel.getById(id);
 
