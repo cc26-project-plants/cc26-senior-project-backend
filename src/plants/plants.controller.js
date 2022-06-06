@@ -28,17 +28,6 @@ export default {
 
   async getById(req, res) {
     const id = req.params.id;
-    ////check sign up status
-    const data = req.body;
-    const checkSignUp = await email_to_userIdModel.checkExistenceOfDocument(
-      data.email,
-    );
-    if (!checkSignUp) {
-      res.status(400).send({ success: false });
-      return;
-    }
-    ////check sign up status
-
     const foundPlants = await plantsModel.getById(id);
 
     if (!foundPlants) {

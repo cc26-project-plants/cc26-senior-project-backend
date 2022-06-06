@@ -27,14 +27,12 @@ export default {
 
   async getLatest12PlantStats(id) {
     try {
-      // checkExistenceOfDocument
       const filteredPlantStats = await db
         .collection("plant_stats")
         .doc(id)
         .get();
-      // console.log("filteredData", filteredPlantStats);
-      if (!filteredPlantStats) return false;
-      return filteredPlantStats;
+      if (!filteredPlantStats.data()) return false;
+      return filteredPlantStats.data();
     } catch (error) {
       return false;
     }
@@ -54,7 +52,7 @@ export default {
     try {
       const plantStatsRef = db.collection("plant_stats").doc(id);
       const newPlantStats = await plantStatsRef.update({
-        sensorData: FieldValue.arrayUnion(data),
+        status: FieldValue.arrayUnion(data),
       });
 
       if (!newPlantStats) return false;

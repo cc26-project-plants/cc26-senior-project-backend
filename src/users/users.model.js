@@ -14,10 +14,8 @@ export default {
 
   async getByEmail(email) {
     try {
-      // console.log("email on user Model", email);
       const usersRef = await db.collection("users");
       const filteredId = await usersRef.doc(email).get();
-      // console.log("filtered", filteredId.data());
       if (!filteredId.data()) return false;
       return filteredId.data();
     } catch (error) {
@@ -68,15 +66,4 @@ export default {
       return false;
     }
   },
-
-  // async loginUser(userId) {
-  //   try {
-  //     const userRef = await db.collection("users").doc(userId).get();
-  //     const userInfo = await userRef.data();
-  //     if (!userInfo) return false;
-  //     return userInfo;
-  //   } catch (error) {
-  //     return false;
-  //   }
-  // },
 };

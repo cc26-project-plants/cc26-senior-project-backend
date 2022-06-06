@@ -13,7 +13,7 @@ export default {
     const extractedPlantStats = [];
     allPlantStats.forEach((doc) => {
       extractedPlantStats.push({
-        id: doc.id,
+        plantId: doc.id,
         data: doc.data(),
       });
     });
@@ -21,17 +21,6 @@ export default {
   },
 
   async getById(req, res) {
-    const data = req.body;
-    ////check sign up status
-    const checkSignUp = await email_to_userIdModel.checkExistenceOfDocument(
-      data.email,
-    );
-    if (!checkSignUp) {
-      res.status(400).send({ success: false });
-      return;
-    }
-    ////check sign up status
-
     const id = req.params.id;
     const foundPlantStats = await plantStatsModel.getById(id);
 
@@ -41,7 +30,7 @@ export default {
     }
 
     const extractedPlantStats = {
-      id: foundPlantStats.id,
+      plantId: foundPlantStats.id,
       data: foundPlantStats.data(),
     };
     res.status(200).send({ success: true, data: extractedPlantStats });
@@ -57,10 +46,10 @@ export default {
     }
 
     const extractedPlantStats = {
-      id: latest12PlantStats.id,
+      plantId: latest12PlantStats.id,
       data: latest12PlantStats.data(),
     };
-    const sortedData = extractedPlantStats.data.sensorData;
+    const sortedData = extractedPlantStats.data.status;
     const querylength = sortedData.length - 12;
     const slicedData = sortedData.slice(querylength);
 
