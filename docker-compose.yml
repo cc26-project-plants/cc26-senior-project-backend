@@ -1,24 +1,24 @@
-version: "3.8"
-services:
-  app:
-    depends_on:
-      - firestore_emulator
-    build: .
-    restart: unless-stopped
-    env_file: ./.env
-    ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-    environment:
-      - FIRESTORE_EMULATOR_HOST=firestore_emulator:8000
-      - FIRESTORE_PROJECT_ID=happa-26-backend
-    stdin_open: true
-    tty: true
-  firestore_emulator:
-    image: mtlynch/firestore-emulator
-    restart: unless-stopped
-    env_file: ./.env
-    environment:
-      - FIRESTORE_PROJECT_ID=happa-26-backend
-      - PORT=8000
-    ports:
-      - $FIRESTORE_LOCAL_PORT:$FIRESTORE_DOCKER_PORT
+# version: "3.8"
+# services:
+#   app:
+#     depends_on:
+#       - firestore_emulator
+#     build: .
+#     restart: unless-stopped
+#     env_file: ./.env
+#     ports:
+#       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+#     environment:
+#       - FIRESTORE_EMULATOR_HOST=firestore_emulator:8000
+#       - FIRESTORE_PROJECT_ID=happa-26-backend
+#     stdin_open: true
+#     tty: true
+#   firestore_emulator:
+#     image: mtlynch/firestore-emulator
+#     restart: unless-stopped
+#     env_file: ./.env
+#     environment:
+#       - FIRESTORE_PROJECT_ID=happa-26-backend
+#       - PORT=8000
+#     ports:
+#       - $FIRESTORE_LOCAL_PORT:$FIRESTORE_DOCKER_PORT

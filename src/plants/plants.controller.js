@@ -50,6 +50,8 @@ export default {
 
   async addPlant(req, res) {
     const data = req.body;
+    const email = req.params.id;
+
     const userIdFromEmail = await email_to_userIdModel.getById(data.email);
     const newPlant = await plantsModel.addPlant(data, userIdFromEmail.userId);
     const updateUserInfo = await usersModel.addPlant(
@@ -69,6 +71,7 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
+
     res.status(200).send({ success: true, data: resData });
   },
 };
