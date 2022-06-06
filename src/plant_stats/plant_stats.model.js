@@ -51,6 +51,7 @@ export default {
   async updatePlantStats(id, data) {
     try {
       const plantStatsRef = db.collection("plant_stats").doc(id);
+
       const newPlantStats = await plantStatsRef.update({
         status: FieldValue.arrayUnion(data),
       });
