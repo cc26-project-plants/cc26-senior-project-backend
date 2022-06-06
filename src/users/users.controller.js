@@ -42,7 +42,7 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-    res.status(200).send({ success: true, data: resData }); // usename, plantname, planttype, plantprofile
+    res.status(200).send({ success: true, data: resData });
   },
 
   async createUser(req, res) {
