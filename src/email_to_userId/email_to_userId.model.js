@@ -34,17 +34,4 @@ export default {
       return false;
     }
   },
-
-  async checkExistenceOfDocument(email) {
-    try {
-      const emailToUserIdRef = await db
-        .collection("email_to_userId")
-        .doc(email)
-        .get();
-      if (!emailToUserIdRef.data()) return false;
-      return emailToUserIdRef.data();
-    } catch (error) {
-      return false;
-    }
-  },
 };

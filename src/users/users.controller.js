@@ -28,16 +28,6 @@ export default {
 
   async getByEmail(req, res) {
     const email = req.params.id;
-    ////check sign up status
-    const checkSignUp = await email_to_userIdModel.checkExistenceOfDocument(
-      email,
-    );
-    if (!checkSignUp) {
-      res.status(400).send({ success: false });
-      return;
-    }
-    ////check sign up status
-
     const userIdObj = await email_to_userIdModel.getById(email);
     const filteredUser = await usersModel.getByEmail(userIdObj.userId);
 
@@ -79,29 +69,4 @@ export default {
     }
     res.status(200).send({ success: true, data: resData });
   },
-
-  // async loginUser(req, res) {
-  //   const email = req.params.email;
-  //   const checkSignUp = await email_to_userIdModel.checkExistenceOfDocument(
-  //     email,
-  //   );
-  //   if (!checkSignUp) {
-  //     res.status(400).send({ success: false });
-  //     return;
-  //   }
-  //   const userId = await checkSignUp.userId;
-  //   const filteredUser = await usersModel.getById(userId);
-
-  //   const resData = await {
-  //     userName: filteredUser.userName,
-  //     plantName: filteredUser.plantName,
-  //     plantId: filteredUser.plantId,
-  //   };
-
-  //   if (!filteredUser) {
-  //     res.status(400).send({ success: false });
-  //     return;
-  //   }
-  //   res.status(200).send({ success: true, data: resData }); // usename, plantname, planttype, plantprofile
-  // },
 };
