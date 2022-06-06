@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "build": "npm install"
+    "build": "npm install",
+    "deploy": "gcloud config set project happa-26-backend && gcloud app deploy"
   },
   "keywords": [],
   "author": "",

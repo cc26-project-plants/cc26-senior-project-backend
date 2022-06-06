@@ -71,6 +71,7 @@ export default {
   async updatePlantStats(req, res) {
     const data = req.body;
     const id = req.params.id;
+
     data.timestamp = new Date();
     if (!data) return;
     const updatedPlantStats = await plantStatsModel.updatePlantStats(id, data);
