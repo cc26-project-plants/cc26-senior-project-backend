@@ -26,6 +26,24 @@ export default {
     }
   },
 
+  async getById(req, res) {
+    const userId = req.params.id;
+    const filteredUser = await usersModel.getByEmail(userId);
+
+    const resData = await {
+      userId: userId,
+      userName: filteredUser.userName,
+      plantName: filteredUser.plantName,
+      plantId: filteredUser.plantId,
+    };
+
+    if (!filteredUser) {
+      res.status(400).send({ success: false });
+      return;
+    }
+    res.status(200).send({ success: true, data: resData });
+  },
+
   async getByEmail(req, res) {
     const email = req.params.id;
     const userIdObj = await email_to_userIdModel.getById(email);
