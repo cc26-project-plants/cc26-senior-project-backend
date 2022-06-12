@@ -45,7 +45,7 @@ export default {
   },
 
   async getByEmail(req, res) {
-    const email = req.params.id;
+    const email = req.params.email;
     const userIdObj = await email_to_userIdModel.getById(email);
     const filteredUser = await usersModel.getByEmail(userIdObj.userId);
 
