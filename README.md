@@ -10,7 +10,7 @@ You can find more details [here](https://github.com/cc26-project-plants/cc26-sen
 ## Built With
 ### Server
 - [Node.js](https://nodejs.org/)  
-- [Express](https://expressjs.com/)  
+- [Express.js](https://expressjs.com/)  
   
 ### Database
 - [Google Cloud Firestore](https://cloud.google.com/firestore)  
@@ -40,5 +40,5 @@ $ npm run server
 ```
   
   
-#### Project Structure
+### Project Structure
 ![architecture](https://github.com/mikako-shirai/dump/blob/master/diagram.png)  
