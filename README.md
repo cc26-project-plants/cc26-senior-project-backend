@@ -1,47 +1,42 @@
-## CC26 Senior Project
+## CC26 Senior Project - Project Plant
 
-**Project Plants**  
-Happa🌿
+**Happa 🌿**  
+Happa is an application designed for those who love plants.  
 
-Please refer README for the project [here](https://github.com/cc26-project-plants/cc26-senior-project/blob/master/README.md).
-
-## Requirement
-
+This repository is for the backend of this project.  
+You can find more details [here](https://github.com/cc26-project-plants/cc26-senior-project/blob/master/README.md).  
+  
+  
+## Built With
 ### Server
-
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-
+- [Node.js](https://nodejs.org/)  
+- [Express](https://expressjs.com/)  
+  
 ### Database
-
-- [Google Cloud Firestore](https://cloud.google.com/firestore)
-  You create 4 tables (users, plants, plant_stats, email_to_userId).
-
+- [Google Cloud Firestore](https://cloud.google.com/firestore)  
+  
+  
 ## Getting Started: Backend
-
-1. move to the root directory
-
+1. set up GCP Firestore database and include credentials in your local environment variables.  
+2. clone this repository  
+```bash
+$ git clone https://github.com/cc26-project-plants/cc26-senior-project-backend.git
+```  
+3. move to the root directory
 ```bash
 $ cd cc26-senior-project-backend
 ```
-
-2. download dependencies
-
+4. download dependencies
 ```bash
 $ npm install
 ```
-
-3. run the server
-
+5. run the server
 ```bash
 # development
 $ npm start
 
 # nodemon mode
 $ npm run server
-
 ```
-
-## Licence
-
-[MIT license](https://en.wikipedia.org/wiki/MIT_License).
+  
+![architecture](https://github.com/mikako-shirai/dump/blob/master/diagram.png)  
