@@ -1,42 +1,47 @@
-## CC26 Senior Project  
-  
+## CC26 Senior Project
+
 **Project Plants**  
-PLANT HOTEL🌿  
-Users – log in/user authentication  
-Plants – plant profile   
-Hardware – data   
-  
-  
-## Getting Started: Backend  
-1. move to the root directory  
+Happa🌿
+
+Please refer README for the project [here](https://github.com/cc26-project-plants/cc26-senior-project/blob/master/README.md).
+
+## Requirement
+
+### Server
+
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+
+### Database
+
+- [Google Cloud Firestore](https://cloud.google.com/firestore)
+  You create 4 tables (users, plants, plant_stats, email_to_userId).
+
+## Getting Started: Backend
+
+1. move to the root directory
+
 ```bash
 $ cd cc26-senior-project-backend
 ```
-2. download dependencies  
+
+2. download dependencies
+
 ```bash
-$ yarn install
+$ npm install
 ```
+
 3. run the server
+
 ```bash
 # development
-$ yarn start
+$ npm start
 
-# watch mode
-$ yarn start:dev
+# nodemon mode
+$ npm run server
 
-# production mode
-$ yarn start:prod
 ```
-  
-  
-## Test  
-```bash
-# unit tests
-$ yarn test
 
-# e2e tests
-$ yarn test:e2e
+## Licence
 
-# test coverage
-$ yarn test:cov
-```
+[MIT license](https://en.wikipedia.org/wiki/MIT_License).

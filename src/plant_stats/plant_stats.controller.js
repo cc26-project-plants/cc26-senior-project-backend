@@ -1,4 +1,3 @@
-import email_to_userIdModel from "../email_to_userId/email_to_userId.model.js";
 import plantStatsModel from "./plant_stats.model.js";
 
 export default {

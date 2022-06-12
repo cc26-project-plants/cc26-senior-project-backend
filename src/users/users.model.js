@@ -12,10 +12,9 @@ export default {
     }
   },
 
-  async getByEmail(email) {
+  async getById(userId) {
     try {
-      const usersRef = await db.collection("users");
-      const filteredId = await usersRef.doc(email).get();
+      const filteredId = await db.collection("users").doc(userId).get();
       if (!filteredId.data()) return false;
       return filteredId.data();
     } catch (error) {
@@ -23,9 +22,9 @@ export default {
     }
   },
 
-  async getById(userId) {
+  async getByEmail(email) {
     try {
-      const filteredId = await db.collection("users").doc(userId).get();
+      const filteredId = await db.collection("users").doc(email).get();
       if (!filteredId.data()) return false;
       return filteredId.data();
     } catch (error) {

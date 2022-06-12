@@ -71,7 +71,6 @@ export default {
       res.status(400).send({ success: false });
       return;
     }
-
     res.status(200).send({ success: true, data: resData });
   },
 };
