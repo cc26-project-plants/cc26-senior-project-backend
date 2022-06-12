@@ -8,7 +8,6 @@ You can find more details [here](https://github.com/cc26-project-plants/cc26-sen
   
   
 ## Built With
-### Server
 - [Node.js](https://nodejs.org/)
 - [Express.js](https://expressjs.com/)
 - [Google Cloud Firestore](https://cloud.google.com/firestore)
