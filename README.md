@@ -17,7 +17,7 @@ You can find more details [here](https://github.com/cc26-project-plants/cc26-sen
   
   
 ## Getting Started: Backend
-1. set up GCP Firestore database and include credentials in your local environment variables.  
+1. set up GCP Firestore database and include credentials in your local environment variables  
 2. clone this repository  
 ```bash
 $ git clone https://github.com/cc26-project-plants/cc26-senior-project-backend.git
@@ -39,4 +39,6 @@ $ npm start
 $ npm run server
 ```
   
+  
+#### Project Structure
 ![architecture](https://github.com/mikako-shirai/dump/blob/master/diagram.png)  
