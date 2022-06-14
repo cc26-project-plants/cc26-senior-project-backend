@@ -40,6 +40,8 @@ $ npm run server
   
   
 ### Project Structure
+#### Architecture
 ![Architecture](https://github.com/mikako-shirai/dump/blob/master/cc26-senior-project/architecture.png)  
+#### Tech Stack
 ![Tech Stack](https://github.com/mikako-shirai/dump/blob/master/cc26-senior-project/tech_stack.png)  
   
